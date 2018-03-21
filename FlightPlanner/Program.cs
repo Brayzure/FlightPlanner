@@ -19,9 +19,6 @@ namespace FlightPlanner
 
             List<string> flightStrings = handler.GetLines();
 
-            string start = "DTW";
-            string end = "TPA";
-
             Directory directory = new Directory();
             directory.PopulateFlights(flightStrings);
 
@@ -35,6 +32,8 @@ namespace FlightPlanner
             }
 
             // Path from start to end
+            string start = "DTW";
+            string end = "TPA";
             List<List<Flight>> trips = directory.Navigate(start, end);
             List<Trip> final = new List<Trip>();
             trips.ForEach((t) =>
