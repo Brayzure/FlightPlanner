@@ -21,11 +21,13 @@ namespace FlightPlanner.Structures
         {
             foreach(string fs in flightStrings)
             {
-                ConvertStringToFlight(fs);
+                Flight f = ConvertStringToFlight(fs);
+
+                RegisterFlight(f);
             }
         }
 
-        public void ConvertStringToFlight(string flightString)
+        public Flight ConvertStringToFlight(string flightString)
         {
             Airport airport;
             List<string> args = flightString.Split(' ').ToList();
@@ -55,7 +57,7 @@ namespace FlightPlanner.Structures
             }
             Flight flight = new Flight(origin, destination, departure, duration);
 
-            RegisterFlight(flight);
+            return flight;
         }
 
         public void RegisterFlight(Flight flight)
