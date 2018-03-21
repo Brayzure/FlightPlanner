@@ -17,7 +17,15 @@ namespace FlightPlanner.Structures
             MinimumLayover = minimumLayover;
         }
 
-        public void ParseFlightString(string flightString)
+        public void PopulateFlights(List<string> flightStrings)
+        {
+            foreach(string fs in flightStrings)
+            {
+                ConvertStringToFlight(fs);
+            }
+        }
+
+        public void ConvertStringToFlight(string flightString)
         {
             Airport airport;
             List<string> args = flightString.Split(' ').ToList();
